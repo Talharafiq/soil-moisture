@@ -57,13 +57,13 @@ for i in range(numberOfFiles):          #In place of 1 we will put variable numb
     run_win_cmd(reproj)
     
     # applying .shp formate file on genrated .tiff file
-    tif_file =  "C:/Users/Talha/Documents/districtSoil/"+moisturedate+".tif"
-    stats = zonal_stats("C:\Users\Talha\Documents\districtSoil\MHshapFile\Maha_Dist_Taluka_Code.shp", "C:/Users/Talha/Documents/districtSoil/"+moisturedate+".tif",geojson_out=True)
+    tif_file =  "<Path to your .nc4 files>/"+moisturedate+".tif"
+    stats = zonal_stats("<Path to your district/state/country shape file>", tif_file,geojson_out=True)
     #storing GeoDataFrame in variable stats1
     geo_data = GeoDataFrame.from_features(stats) 
-    tif_file = np.array(geo_data) 
+    tif_file_data = np.array(geo_data) 
     #converting geodata into numpy array
-    geo_data_arr = np.array(tif_file[:,[0,1,2,3,7]]) #slicing array
+    geo_data_arr = np.array(tif_file_data[:,[0,1,2,3,7]]) #slicing array
  
     # further process is for createing xls file and writing data in it 
     xlsxName = moisturedate+".xlsx"     
@@ -78,7 +78,7 @@ for i in range(numberOfFiles):          #In place of 1 we will put variable numb
     for row, data in enumerate(geo_data_arr):
         worksheet.write_row(row + 1, col, data)
     workbook.close()
-    book = xlrd.open_workbook("C:/Users/Talha/Documents/districtSoil/"+xlsxName)
+    book = xlrd.open_workbook("<Path to you xlsx>/"+xlsxName)
     sheet = book.sheet_by_name("Sheet1")
     
     # Create data base connection 
