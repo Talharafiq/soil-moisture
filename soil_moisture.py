@@ -31,7 +31,7 @@ nowDate = datetime.datetime(2018,6,25)
 numberOfFiles = len(fnmatch.filter(os.listdir('<Path of to your .nc4 files>'), '*.nc4'))
 files = (fnmatch.filter(os.listdir('<Path of to your .nc4 files>'), "*2018*"))
 
-for i in range(numberOfFiles):          #In place of 1 we will put variable numberOfFiles so that for loop run accordingly
+for i in range(numberOfFiles):
     nowDate += datetime.timedelta(days=1)
     date = nowDate.strftime("%Y%m%d")
     moisturedate = nowDate.strftime("%Y-%m-%d")
