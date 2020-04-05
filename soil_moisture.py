@@ -43,6 +43,8 @@ for i in range(numberOfFiles):          #In place of 1 we will put variable numb
     run_win_cmd(vrt1)
     
     #creating cmd
+    # In below variable "vert2" geospatial location are of
+    # Maharashtra state India.
     vrt2 = "gdal_translate -of VRT -gcp 0 0 360 -90 -gcp 1800 0 360 90 -gcp 0 3600 0 -90 -gcp 1800 3600 0 90 vrt1.vrt vrt2.vrt"
     #calling function which help to run terminal command
     run_win_cmd(vrt2)
